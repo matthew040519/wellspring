@@ -174,16 +174,7 @@
     </section>
 
     <section id="featured" class="promo-spotlight">
-        <div class="section-header">
-            <h2 style="color: var(--promo-orange); font-size: 2.5rem;">Health Supplement Deals</h2>
-            <p style="font-family: 'Lora', serif; font-style: italic;">Elevate Your Wellness with Cellmax-MD</p>
-        </div>
-        <div class="promo-container">
-            <div class="badge-organic">CERTIFIED ORGANIC</div>
-            
-            <img src="green_and_Orange_Promotion.png" alt="Cellmax-MD Promotional Deal" class="promo-image">
-            <div style="margin-top: 30px;">
-                 @if (session('error'))
+        @if (session('error'))
                                                                                             <div style="color: #b94a48; background: #f2dede; border: 1px solid #ebccd1; padding: 10px 15px; border-radius: 4px; margin-bottom: 18px; text-align: left;">
                                                                                                 <strong>Whoops! Something went wrong.</strong>
                                                                                                 <p>{{ session('error') }}</p>
@@ -205,12 +196,23 @@
                                                                                                 </ul>
                                                                                             </div>
                                                                                         @endif
-                                <button id="orderNowBtn" class="btn-main" style="background: var(--promo-orange);">Order Now</button>
+        @foreach ($products as $product)
+                <div class="section-header">
+            <h2 style="color: var(--promo-orange); font-size: 2.5rem;">{{ $product->name }}</h2>
+            <p style="font-family: 'Lora', serif; font-style: italic;">Elevate Your Wellness with {{ $product->name }}</p>
+        </div>
+        <div class="promo-container">
+            <div class="badge-organic">CERTIFIED ORGANIC</div>
+            
+            <img src="{{ asset('storage/product_images/' . $product->image) }}" alt="{{ $product->name }} Promotional Deal" class="promo-image">
+            <div style="margin-top: 30px;">
+                 
+                                <button id="orderNowBtn{{ $product->id }}" class="btn-main" style="background: var(--promo-orange);">Order Now</button>
                                 <!-- Modal -->
-                                <div id="orderModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100vw; height:100vh; overflow:auto; background:rgba(0,0,0,0.4);">
+                                <div id="orderModal{{ $product->id }}" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100vw; height:100vh; overflow:auto; background:rgba(0,0,0,0.4);">
                                     <div class="modal-content" style="background:#fff; margin:10% auto; padding:30px 20px; border-radius:10px; max-width:400px; position:relative; box-shadow:0 4px 24px rgba(0,0,0,0.2); text-align:center;">
-                                        <span id="closeModal" style="position:absolute;top:10px;right:18px;font-size:2rem;cursor:pointer;">&times;</span>
-                                        <h3 style="margin-bottom:18px; color:var(--promo-orange);">Order Cellmax-MD</h3>
+                                        <span id="closeModal{{ $product->id }}" style="position:absolute;top:10px;right:18px;font-size:2rem;cursor:pointer;">&times;</span>
+                                        <h3 style="margin-bottom:18px; color:var(--promo-orange);">Order {{ $product->name }}</h3>
                                         <form method="POST" action="{{ route('buy-product') }}" enctype="multipart/form-data">
                                                                                        
                                             @csrf
@@ -222,15 +224,16 @@
                                                 <label for="file" style="display:block; margin-bottom:6px;">Choose file:</label>
                                                 <input type="file" id="file" name="file" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:4px; background:#f9f9f9; cursor:pointer;">
                                             </div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
                                             <button type="submit" class="btn-main" style="width:100%;">Upload</button>
                                         </form>
                                     </div>
                                 </div>
                                 <script>
                                 document.addEventListener('DOMContentLoaded', function() {
-                                    var modal = document.getElementById('orderModal');
-                                    var btn = document.getElementById('orderNowBtn');
-                                    var span = document.getElementById('closeModal');
+                                    var modal = document.getElementById("orderModal<?php echo $product->id; ?>");
+                                    var btn = document.getElementById("orderNowBtn<?php echo $product->id; ?>");
+                                    var span = document.getElementById("closeModal<?php echo $product->id; ?>");
                                     btn.onclick = function() { modal.style.display = 'block'; };
                                     span.onclick = function() { modal.style.display = 'none'; };
                                     window.onclick = function(event) {
@@ -240,6 +243,8 @@
                                 </script>
             </div>
         </div>
+        @endforeach
+        
     </section>
 
     <section id="science" class="science-section">
