@@ -29,7 +29,6 @@ jobs:
           server: ftp.goldenphoenixgroup.net
           username: wellspring@goldenphoenixgroup.net
           password: wellspring2026
-          # username: phxviewv3@phxview.com
-          # password: PhxView2025
-          # local-dir: ./ # Directory to upload
-          # git-ftp-args: --insecure # Use only if you're dealing with self-signed certificates
+          local-dir: ./ # Directory to upload
+          git-ftp-args: --insecure # Use only if you're dealing with self-signed certificates
+          
