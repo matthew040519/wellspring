@@ -1,0 +1,35 @@
+name: Deploy Laravel Project
+
+on:
+  push:
+    branches:
+      - master # Trigger deployment on push to master branch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5' # Specify the PHP version your Laravel project uses
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --no-progress --no-suggest --prefer-dist
+
+      - name: Run Artisan commands
+        run: php artisan migrate --force
+
+      - name: Upload files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ftp.goldenphoenixgroup.net
+          username: wellspring@goldenphoenixgroup.net
+          password: wellspring2026
+          # username: phxviewv3@phxview.com
+          # password: PhxView2025
+          # local-dir: ./ # Directory to upload
+          # git-ftp-args: --insecure # Use only if you're dealing with self-signed certificates

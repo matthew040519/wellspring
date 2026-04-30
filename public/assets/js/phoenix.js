@@ -4591,55 +4591,55 @@
     const mapboxContainers = document.querySelectorAll('.mapbox-container');
     const mapContainerTab = document.querySelectorAll('[data-tab-map-container]');
     if (mapboxContainers) {
-      mapboxContainers.forEach(mapboxContainer => {
-        window.mapboxgl.accessToken =
-          'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
+      // mapboxContainers.forEach(mapboxContainer => {
+      //   window.mapboxgl.accessToken =
+      //     'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
 
-        const mapbox = mapboxContainer.querySelector('[data-mapbox]');
-        if (mapbox) {
-          const options = getData(mapbox, 'mapbox');
+      //   const mapbox = mapboxContainer.querySelector('[data-mapbox]');
+      //   if (mapbox) {
+      //     const options = getData(mapbox, 'mapbox');
 
-          const zoomIn = document.querySelector('.zoomIn');
-          const zoomOut = document.querySelector('.zoomOut');
-          const fullScreen = document.querySelector('.fullScreen');
+      //     const zoomIn = document.querySelector('.zoomIn');
+      //     const zoomOut = document.querySelector('.zoomOut');
+      //     const fullScreen = document.querySelector('.fullScreen');
 
-          const styles = {
-            default: 'mapbox://styles/mapbox/light-v11',
-            light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
-            dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
-          };
+      //     const styles = {
+      //       default: 'mapbox://styles/mapbox/light-v11',
+      //       light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
+      //       dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
+      //     };
 
-          const map = new window.mapboxgl.Map({
-            ...options,
-            container: 'mapbox',
-            style: styles[window.config.config.phoenixTheme]
-          });
+      //     const map = new window.mapboxgl.Map({
+      //       ...options,
+      //       container: 'mapbox',
+      //       style: styles[window.config.config.phoenixTheme]
+      //     });
 
-          if (options.center) {
-            new window.mapboxgl.Marker({
-              color: getColor('danger')
-            })
-              .setLngLat(options.center)
-              .addTo(map);
-          }
+      //     if (options.center) {
+      //       new window.mapboxgl.Marker({
+      //         color: getColor('danger')
+      //       })
+      //         .setLngLat(options.center)
+      //         .addTo(map);
+      //     }
 
-          if (zoomIn && zoomOut) {
-            zoomIn.addEventListener('click', () => map.zoomIn());
-            zoomOut.addEventListener('click', () => map.zoomOut());
-          }
-          if (fullScreen) {
-            fullScreen.addEventListener('click', () =>
-              map.getContainer().requestFullscreen()
-            );
-          }
+      //     if (zoomIn && zoomOut) {
+      //       zoomIn.addEventListener('click', () => map.zoomIn());
+      //       zoomOut.addEventListener('click', () => map.zoomOut());
+      //     }
+      //     if (fullScreen) {
+      //       fullScreen.addEventListener('click', () =>
+      //         map.getContainer().requestFullscreen()
+      //       );
+      //     }
 
-          mapContainerTab.forEach(ele => {
-            ele.addEventListener('shown.bs.tab', () => {
-              map.resize();
-            });
-          });
-        }
-      });
+      //     mapContainerTab.forEach(ele => {
+      //       ele.addEventListener('shown.bs.tab', () => {
+      //         map.resize();
+      //       });
+      //     });
+      //   }
+      // });
     }
   };
 
@@ -4652,160 +4652,160 @@
 
   const flightMapInit = () => {
     const flightMap = document.querySelector('#flightMap');
-    if (flightMap) {
-      window.mapboxgl.accessToken =
-        'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
+    // if (flightMap) {
+    //   window.mapboxgl.accessToken =
+    //     'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
 
-      const zoomIn = document.querySelector('.zoomIn');
-      const zoomOut = document.querySelector('.zoomOut');
-      const fullScreen = document.querySelector('.fullScreen');
+    //   const zoomIn = document.querySelector('.zoomIn');
+    //   const zoomOut = document.querySelector('.zoomOut');
+    //   const fullScreen = document.querySelector('.fullScreen');
 
-      const styles = {
-        default: 'mapbox://styles/mapbox/light-v11',
-        light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
-        dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
-      };
+    //   const styles = {
+    //     default: 'mapbox://styles/mapbox/light-v11',
+    //     light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
+    //     dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
+    //   };
 
-      const map = new window.mapboxgl.Map({
-        container: 'flightMap',
-        style: styles[window.config.config.phoenixTheme],
-        center: [-73.102712, 7.102257],
-        zoom: 5,
-        pitch: 40,
-        attributionControl: false
-      });
+    //   const map = new window.mapboxgl.Map({
+    //     container: 'flightMap',
+    //     style: styles[window.config.config.phoenixTheme],
+    //     center: [-73.102712, 7.102257],
+    //     zoom: 5,
+    //     pitch: 40,
+    //     attributionControl: false
+    //   });
 
-      zoomIn.addEventListener('click', () => map.zoomIn());
-      zoomOut.addEventListener('click', () => map.zoomOut());
-      fullScreen.addEventListener('click', () =>
-        map.getContainer().requestFullscreen()
-      );
+    //   zoomIn.addEventListener('click', () => map.zoomIn());
+    //   zoomOut.addEventListener('click', () => map.zoomOut());
+    //   fullScreen.addEventListener('click', () =>
+    //     map.getContainer().requestFullscreen()
+    //   );
 
-      const origin = [-61.100583, 5.044713];
-      const currentPosition = [-74.2139449434892, 8.136553550752552];
-      const destination = [-84.913785, 10.325774];
+    //   const origin = [-61.100583, 5.044713];
+    //   const currentPosition = [-74.2139449434892, 8.136553550752552];
+    //   const destination = [-84.913785, 10.325774];
 
-      const originToCurrentRoute = {
-        type: 'FeatureCollection',
-        features: [
-          {
-            type: 'Feature',
-            geometry: {
-              type: 'LineString',
-              coordinates: [origin, currentPosition]
-            }
-          }
-        ]
-      };
-      const currentToDestinationRoute = {
-        type: 'FeatureCollection',
-        features: [
-          {
-            type: 'Feature',
-            geometry: {
-              type: 'LineString',
-              coordinates: [currentPosition, destination]
-            }
-          }
-        ]
-      };
+    //   const originToCurrentRoute = {
+    //     type: 'FeatureCollection',
+    //     features: [
+    //       {
+    //         type: 'Feature',
+    //         geometry: {
+    //           type: 'LineString',
+    //           coordinates: [origin, currentPosition]
+    //         }
+    //       }
+    //     ]
+    //   };
+    //   const currentToDestinationRoute = {
+    //     type: 'FeatureCollection',
+    //     features: [
+    //       {
+    //         type: 'Feature',
+    //         geometry: {
+    //           type: 'LineString',
+    //           coordinates: [currentPosition, destination]
+    //         }
+    //       }
+    //     ]
+    //   };
 
-      const points = {
-        type: 'FeatureCollection',
-        features: [
-          {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'Point',
-              coordinates: origin
-            }
-          },
-          {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'Point',
-              coordinates: currentPosition
-            }
-          },
-          {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'Point',
-              coordinates: destination
-            }
-          }
-        ]
-      };
+    //   const points = {
+    //     type: 'FeatureCollection',
+    //     features: [
+    //       {
+    //         type: 'Feature',
+    //         properties: {},
+    //         geometry: {
+    //           type: 'Point',
+    //           coordinates: origin
+    //         }
+    //       },
+    //       {
+    //         type: 'Feature',
+    //         properties: {},
+    //         geometry: {
+    //           type: 'Point',
+    //           coordinates: currentPosition
+    //         }
+    //       },
+    //       {
+    //         type: 'Feature',
+    //         properties: {},
+    //         geometry: {
+    //           type: 'Point',
+    //           coordinates: destination
+    //         }
+    //       }
+    //     ]
+    //   };
 
-      let count = 1;
-      points.features.forEach(feature => {
-        const el = document.createElement('div');
-        el.className = `marker-${count}`;
-        new window.mapboxgl.Marker(el)
-          .setLngLat(feature.geometry.coordinates)
-          .addTo(map);
-        count += 1;
-      });
+    //   let count = 1;
+    //   points.features.forEach(feature => {
+    //     const el = document.createElement('div');
+    //     el.className = `marker-${count}`;
+    //     new window.mapboxgl.Marker(el)
+    //       .setLngLat(feature.geometry.coordinates)
+    //       .addTo(map);
+    //     count += 1;
+    //   });
 
-      const lineDistance = window.turf.length(originToCurrentRoute.features[0]);
-      const lineDistance2 = window.turf.length(originToCurrentRoute.features[0]);
+    //   const lineDistance = window.turf.length(originToCurrentRoute.features[0]);
+    //   const lineDistance2 = window.turf.length(originToCurrentRoute.features[0]);
 
-      const arc = [];
-      const arc2 = [];
+    //   const arc = [];
+    //   const arc2 = [];
 
-      const steps = 500;
+    //   const steps = 500;
 
-      for (let i = 0; i < lineDistance; i += lineDistance / steps) {
-        const segment = window.turf.along(originToCurrentRoute.features[0], i);
-        arc.push(segment.geometry.coordinates);
-      }
-      for (let i = 0; i < lineDistance2; i += lineDistance2 / steps) {
-        const segment = window.turf.along(
-          currentToDestinationRoute.features[0],
-          i
-        );
-        arc2.push(segment.geometry.coordinates);
-      }
+    //   for (let i = 0; i < lineDistance; i += lineDistance / steps) {
+    //     const segment = window.turf.along(originToCurrentRoute.features[0], i);
+    //     arc.push(segment.geometry.coordinates);
+    //   }
+    //   for (let i = 0; i < lineDistance2; i += lineDistance2 / steps) {
+    //     const segment = window.turf.along(
+    //       currentToDestinationRoute.features[0],
+    //       i
+    //     );
+    //     arc2.push(segment.geometry.coordinates);
+    //   }
 
-      originToCurrentRoute.features[0].geometry.coordinates = arc;
-      currentToDestinationRoute.features[0].geometry.coordinates = arc2;
+    //   originToCurrentRoute.features[0].geometry.coordinates = arc;
+    //   currentToDestinationRoute.features[0].geometry.coordinates = arc2;
 
-      map.on('load', () => {
-        map.addSource('route', {
-          type: 'geojson',
-          data: originToCurrentRoute.features[0]
-        });
-        map.addSource('route2', {
-          type: 'geojson',
-          data: currentToDestinationRoute.features[0]
-        });
+    //   map.on('load', () => {
+    //     map.addSource('route', {
+    //       type: 'geojson',
+    //       data: originToCurrentRoute.features[0]
+    //     });
+    //     map.addSource('route2', {
+    //       type: 'geojson',
+    //       data: currentToDestinationRoute.features[0]
+    //     });
 
-        map.addLayer({
-          id: 'route',
-          source: 'route',
-          type: 'line',
-          paint: {
-            'line-width': 2,
-            'line-color':
-              getItemFromStore('phoenixTheme') === 'dark'
-                ? getColor('primary')
-                : getColor('primary-light')
-          }
-        });
-        map.addLayer({
-          id: 'route2',
-          source: 'route2',
-          type: 'line',
-          paint: {
-            'line-width': 1,
-            'line-color': getColor('warning')
-          }
-        });
-      });
-    }
+    //     map.addLayer({
+    //       id: 'route',
+    //       source: 'route',
+    //       type: 'line',
+    //       paint: {
+    //         'line-width': 2,
+    //         'line-color':
+    //           getItemFromStore('phoenixTheme') === 'dark'
+    //             ? getColor('primary')
+    //             : getColor('primary-light')
+    //       }
+    //     });
+    //     map.addLayer({
+    //       id: 'route2',
+    //       source: 'route2',
+    //       type: 'line',
+    //       paint: {
+    //         'line-width': 1,
+    //         'line-color': getColor('warning')
+    //       }
+    //     });
+    //   });
+    // }
   };
 
   const themeController$1 = document.body;
@@ -6160,131 +6160,131 @@
 
   const mapboxClusterInit = () => {
     const mapboxCluster = document.querySelectorAll('#mapbox-cluster');
-    if (mapboxCluster) {
-      mapboxCluster.forEach(() => {
-        window.mapboxgl.accessToken =
-          'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
+    // if (mapboxCluster) {
+    //   mapboxCluster.forEach(() => {
+    //     window.mapboxgl.accessToken =
+    //       'pk.eyJ1IjoidGhlbWV3YWdvbiIsImEiOiJjbGhmNW5ybzkxcmoxM2RvN2RmbW1nZW90In0.hGIvQ890TYkZ948MVrsMIQ';
 
-        const styles = {
-          default: 'mapbox://styles/mapbox/light-v11',
-          light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
-          dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
-        };
+    //     const styles = {
+    //       default: 'mapbox://styles/mapbox/light-v11',
+    //       light: 'mapbox://styles/themewagon/clj57pads001701qo25756jtw',
+    //       dark: 'mapbox://styles/themewagon/cljzg9juf007x01pk1bepfgew'
+    //     };
 
-        const map = new window.mapboxgl.Map({
-          container: 'mapbox-cluster',
-          style: styles[window.config.config.phoenixTheme],
-          center: [-73.102712, 7.102257],
-          zoom: 3.5,
-          pitch: 40,
-          attributionControl: false
-        });
+    //     const map = new window.mapboxgl.Map({
+    //       container: 'mapbox-cluster',
+    //       style: styles[window.config.config.phoenixTheme],
+    //       center: [-73.102712, 7.102257],
+    //       zoom: 3.5,
+    //       pitch: 40,
+    //       attributionControl: false
+    //     });
 
-        map.on('load', () => {
-          map.addSource('earthquakes', {
-            type: 'geojson',
-            data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
-            cluster: true,
-            clusterMaxZoom: 14,
-            clusterRadius: 50
-          });
+    //     map.on('load', () => {
+    //       map.addSource('earthquakes', {
+    //         type: 'geojson',
+    //         data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
+    //         cluster: true,
+    //         clusterMaxZoom: 14,
+    //         clusterRadius: 50
+    //       });
 
-          map.addLayer({
-            id: 'clusters',
-            type: 'circle',
-            source: 'earthquakes',
-            filter: ['has', 'point_count'],
-            paint: {
-              'circle-color': [
-                'step',
-                ['get', 'point_count'],
-                getColor('secondary'),
-                100,
-                getColor('info'),
-                750,
-                getColor('warning')
-              ],
-              'circle-radius': [
-                'step',
-                ['get', 'point_count'],
-                20,
-                100,
-                30,
-                750,
-                40
-              ]
-            }
-          });
+    //       map.addLayer({
+    //         id: 'clusters',
+    //         type: 'circle',
+    //         source: 'earthquakes',
+    //         filter: ['has', 'point_count'],
+    //         paint: {
+    //           'circle-color': [
+    //             'step',
+    //             ['get', 'point_count'],
+    //             getColor('secondary'),
+    //             100,
+    //             getColor('info'),
+    //             750,
+    //             getColor('warning')
+    //           ],
+    //           'circle-radius': [
+    //             'step',
+    //             ['get', 'point_count'],
+    //             20,
+    //             100,
+    //             30,
+    //             750,
+    //             40
+    //           ]
+    //         }
+    //       });
 
-          map.addLayer({
-            id: 'cluster-count',
-            type: 'symbol',
-            source: 'earthquakes',
-            filter: ['has', 'point_count'],
-            layout: {
-              'text-field': ['get', 'point_count_abbreviated'],
-              'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-              'text-size': 12
-            },
-            paint: {
-              'text-color': getColor('white')
-            }
-          });
+    //       map.addLayer({
+    //         id: 'cluster-count',
+    //         type: 'symbol',
+    //         source: 'earthquakes',
+    //         filter: ['has', 'point_count'],
+    //         layout: {
+    //           'text-field': ['get', 'point_count_abbreviated'],
+    //           'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+    //           'text-size': 12
+    //         },
+    //         paint: {
+    //           'text-color': getColor('white')
+    //         }
+    //       });
 
-          map.addLayer({
-            id: 'unclustered-point',
-            type: 'circle',
-            source: 'earthquakes',
-            filter: ['!', ['has', 'point_count']],
-            paint: {
-              'circle-color': getColor('primary-light'),
-              'circle-radius': 4,
-              'circle-stroke-width': 1,
-              'circle-stroke-color': getColor('emphasis-bg')
-            }
-          });
+    //       map.addLayer({
+    //         id: 'unclustered-point',
+    //         type: 'circle',
+    //         source: 'earthquakes',
+    //         filter: ['!', ['has', 'point_count']],
+    //         paint: {
+    //           'circle-color': getColor('primary-light'),
+    //           'circle-radius': 4,
+    //           'circle-stroke-width': 1,
+    //           'circle-stroke-color': getColor('emphasis-bg')
+    //         }
+    //       });
 
-          map.on('click', 'clusters', e => {
-            const features = map.queryRenderedFeatures(e.point, {
-              layers: ['clusters']
-            });
-            const clusterId = features[0].properties.cluster_id;
-            map
-              .getSource('earthquakes')
-              .getClusterExpansionZoom(clusterId, (err, zoom) => {
-                if (err) return;
+    //       map.on('click', 'clusters', e => {
+    //         const features = map.queryRenderedFeatures(e.point, {
+    //           layers: ['clusters']
+    //         });
+    //         const clusterId = features[0].properties.cluster_id;
+    //         map
+    //           .getSource('earthquakes')
+    //           .getClusterExpansionZoom(clusterId, (err, zoom) => {
+    //             if (err) return;
 
-                map.easeTo({
-                  center: features[0].geometry.coordinates,
-                  zoom
-                });
-              });
-          });
+    //             map.easeTo({
+    //               center: features[0].geometry.coordinates,
+    //               zoom
+    //             });
+    //           });
+    //       });
 
-          map.on('click', 'unclustered-point', e => {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const { mag } = e.features[0].properties;
-            const tsunami = e.features[0].properties.tsunami === 1 ? 'yes' : 'no';
+    //       map.on('click', 'unclustered-point', e => {
+    //         const coordinates = e.features[0].geometry.coordinates.slice();
+    //         const { mag } = e.features[0].properties;
+    //         const tsunami = e.features[0].properties.tsunami === 1 ? 'yes' : 'no';
 
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
+    //         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    //         }
 
-            new window.mapboxgl.Popup()
-              .setLngLat(coordinates)
-              .setHTML(`magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`)
-              .addTo(map);
-          });
+    //         new window.mapboxgl.Popup()
+    //           .setLngLat(coordinates)
+    //           .setHTML(`magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`)
+    //           .addTo(map);
+    //       });
 
-          map.on('mouseenter', 'clusters', () => {
-            map.getCanvas().style.cursor = 'pointer';
-          });
-          map.on('mouseleave', 'clusters', () => {
-            map.getCanvas().style.cursor = '';
-          });
-        });
-      });
-    }
+    //       map.on('mouseenter', 'clusters', () => {
+    //         map.getCanvas().style.cursor = 'pointer';
+    //       });
+    //       map.on('mouseleave', 'clusters', () => {
+    //         map.getCanvas().style.cursor = '';
+    //       });
+    //     });
+    //   });
+    // }
   };
 
   const themeController = document.body;
